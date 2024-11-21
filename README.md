@@ -100,6 +100,16 @@ The tool is designed for efficient communication using the `poll/select` API.
 
 Contributions are welcome! Fork the repository, create a branch, and submit a pull request.
 
+## Acknowledgments
+
+This project was developed as part of an academic assignment to practice advanced C++ programming concepts.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Author
+
+**Halel Itzhaki**
+
+For any questions or suggestions, please feel free to contact me.
