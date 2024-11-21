@@ -37,7 +37,7 @@ The tool is designed for efficient communication using the `poll/select` API.
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/stnc-tool.git
+   git clone https://github.com/halelitzhaki/stnc-tool
    cd stnc-tool
    ```
 
