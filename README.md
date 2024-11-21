@@ -33,7 +33,6 @@ The tool is designed for efficient communication using the `poll/select` API.
 ### Prerequisites
 - A Linux environment (Ubuntu or other distributions).
 - GCC compiler.
-- A working `Makefile`.
 
 ### Installation
 1. Clone the repository:
