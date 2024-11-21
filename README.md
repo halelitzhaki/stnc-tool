@@ -1,58 +1,106 @@
-# OS_Assignment_3
+# stnc - Student Network Communication and Performance Testing Tool
 
-Written by:
-1. Halel Itzhaki - 322989674
-2. Ori Ekshtein - 213562069
+## Overview
 
-This assignment include the stnc program which implements a cmd chat tool and a network communication performance tester.
+`stnc` is a versatile command-line tool for network communication and performance testing. It supports two modes:
+- **Chat Mode:** Enables two-way communication over TCP.
+- **Performance Test Mode:** Benchmarks various communication styles, including IPv4/IPv6, UNIX domain sockets, mmap, and pipes.
 
-## Installation
+The tool is designed for efficient communication using the `poll/select` API.
 
-To install OS_Assignment_3, run on terminal - 
-```bash
-git clone https://github.com/halelitzhaki/OS_Assignment_3.git
-```
+## Features
 
-## Usage
+### Chat Mode
+- Simultaneous sending and receiving of messages over a TCP connection.
+- Simple command-line interface for client and server communication.
 
-Run on terminal the following command:
-```bash
-make all
-```
+### Performance Test Mode
+- Generates a 100MB data chunk and calculates its checksum.
+- Transmits data over various communication styles:
+  - **IPv4:** TCP/UDP
+  - **IPv6:** TCP/UDP
+  - **Unix Domain Sockets:** Stream/Datagram
+  - **mmap:** Memory-mapped file
+  - **pipe:** Named pipe
+- Measures and reports transmission time in milliseconds.
 
-To use the chat tool, run the following commands in separate terminal windows:
+### Command Usage
+- Displays usage instructions and handles invalid/missing parameters gracefully.
+- Supports quiet mode for performance testing.
 
-First:
-./stnc -s [PORT]
+## Getting Started
 
-Second:
-./stnc -c [IP] [PORT]
+### Prerequisites
+- A Linux environment (Ubuntu or other distributions).
+- GCC compiler.
+- A working `Makefile`.
 
-For example:
-First: 
-```bash
-./stnc -s 9090
-```
-Second:
-```bash
-./stnc -c 127.0.0.1 9090
-```
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/username/stnc-tool.git
+   cd stnc-tool
+   ```
 
+2. Build the project:
+   ```bash
+   make
+   ```
 
-To use the network communication performance tester, run the following commands in separate terminal windows:
+### Usage
 
-First:
-./stnc -s [PORT] [flag] [flag]
+#### Chat Mode
+- **Server:**
+  ```bash
+  ./stnc -s PORT
+  ```
+- **Client:**
+  ```bash
+  ./stnc -c IP PORT
+  ```
 
-Second:
-./stnc -c [IP] [PORT] [flag] [type] [param]
+#### Performance Test Mode
+- **Server:**
+  ```bash
+  ./stnc -s PORT -p [-q]
+  ```
+  - `-p`: Enables performance testing.
+  - `-q`: Quiet mode (only test results are printed).
 
-For example:
-First: 
-```bash
-./stnc -s 9090 -p -q
-```
-Second:
-```bash
-./stnc -c 127.0.0.1 9090 -p ipv6 tcp
-```
+- **Client:**
+  ```bash
+  ./stnc -c IP PORT -p <type> <param>
+  ```
+  - `<type>`: Communication style (e.g., ipv4, ipv6, uds, mmap, pipe).
+  - `<param>`: Specific parameter (e.g., tcp/udp or file name).
+
+#### Example Commands
+- IPv4 TCP performance test:
+  ```bash
+  ./stnc -c 127.0.0.1 8080 -p ipv4 tcp
+  ```
+
+- UNIX Domain Socket stream test:
+  ```bash
+  ./stnc -c /tmp/socket 8080 -p uds stream
+  ```
+
+## Project Structure
+
+- `stnc.c`: Main program implementation.
+- `Makefile`: Build script with `make` and `make clean` targets.
+- `README.md`: Documentation.
+
+## Notes
+
+- Ensure the server is running before initiating the client.
+- Use Beej's Guide to IPC for reference during implementation.
+- The tool is designed without threads for simplicity and compatibility.
+
+## Contributing
+
+Contributions are welcome! Fork the repository, create a branch, and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
