@@ -102,7 +102,7 @@ Contributions are welcome! Fork the repository, create a branch, and submit a pu
 
 ## Acknowledgments
 
-This project was developed as part of an academic assignment to practice advanced C++ programming concepts.
+This project was developed as part of an academic assignment to practice advanced C and OS programming concepts.
 
 ## License
 
